@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VideoSave - Video Tools</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #d1d5db;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .box h2 {
+      margin-bottom: 10px;
+    }
+
+    .box p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #1d4ed8;
+    }
+
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .platform {
+      background: #f3f4f6;
+      padding: 15px 5px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .notice {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .platforms {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎬 VideoSave</h1>
+  <p>Simple video tools in one place</p>
+</header>
+
+<div class="container">
+
+  <div class="box">
+    <h2>Download Your Video</h2>
+
+    <p>Paste a video URL below to get started.</p>
+
+    <input
+      class="input"
+      type="url"
+      placeholder="Paste video URL here..."
+      id="videoURL"
+    >
+
+    <button class="button" onclick="startDownload()">
+      🔗 Continue
+    </button>
+
+    <div class="platforms">
+      <div class="platform">▶️ YouTube</div>
+      <div class="platform">🎵 TikTok</div>
+      <div class="platform">📘 Facebook</div>
+      <div class="platform">📸 Instagram</div>
+    </div>
+
+    <div class="notice">
+      Please download only videos you own or have permission to use.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 VideoSave
+</footer>
+
+<script>
+function startDownload() {
+  const url = document.getElementById("videoURL").value.trim();
+
+  if (!url) {
+    alert("Please paste a video URL first.");
+    return;
+  }
+
+  alert(
+    "URL received! A download service/backend is required to process the video."
+  );
+}
+</script>
+
+</body>
+</html>
