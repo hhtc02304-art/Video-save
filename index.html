@@ -1,176 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VideoSave - Video Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<title>VideoSave - Video Tools</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #222;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 22px;
-      text-align: center;
-    }
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f6fb;
+  color:#172033;
+}
 
-    header h1 {
-      font-size: 30px;
-    }
+header{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:32px 20px;
+}
 
-    header p {
-      margin-top: 8px;
-      color: #d1d5db;
-    }
+.logo{
+  font-size:38px;
+  font-weight:bold;
+}
 
-    .container {
-      max-width: 700px;
-      margin: 50px auto;
-      padding: 20px;
-    }
+header p{
+  margin-top:8px;
+  color:#cbd5e1;
+}
 
-    .box {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      text-align: center;
-    }
+.container{
+  max-width:700px;
+  margin:45px auto;
+  padding:20px;
+}
 
-    .box h2 {
-      margin-bottom: 10px;
-    }
+.card{
+  background:white;
+  border-radius:22px;
+  padding:35px 25px;
+  text-align:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
 
-    .box p {
-      color: #666;
-      margin-bottom: 25px;
-    }
+.card h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
 
-    .input {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
+.subtitle{
+  color:#64748b;
+  margin-bottom:25px;
+}
 
-    .button {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: #2563eb;
-      color: white;
-      font-size: 17px;
-      cursor: pointer;
-    }
+.input-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:12px;
+}
 
-    .button:hover {
-      background: #1d4ed8;
-    }
+input{
+  flex:1;
+  padding:16px;
+  border:2px solid #e2e8f0;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+}
 
-    .platforms {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 30px;
-    }
+input:focus{
+  border-color:#2563eb;
+}
 
-    .platform {
-      background: #f3f4f6;
-      padding: 15px 5px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
+.paste{
+  padding:0 16px;
+  border:0;
+  border-radius:12px;
+  background:#e2e8f0;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    .notice {
-      margin-top: 25px;
-      font-size: 13px;
-      color: #777;
-    }
+.continue{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #777;
-    }
+.continue:hover{
+  background:#1d4ed8;
+}
 
-    @media (max-width: 600px) {
-      .platforms {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
+.platforms{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:25px;
+}
+
+.platform{
+  padding:17px;
+  background:#f1f5f9;
+  border-radius:12px;
+  font-size:16px;
+}
+
+.notice{
+  margin-top:25px;
+  font-size:13px;
+  color:#64748b;
+  line-height:1.5;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#64748b;
+}
+
+#message{
+  margin-top:15px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+@media(max-width:600px){
+
+  .input-box{
+    flex-direction:column;
+  }
+
+  .paste{
+    padding:14px;
+  }
+
+  .card h2{
+    font-size:25px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🎬 VideoSave</h1>
+  <div class="logo">🎬 VideoSave</div>
   <p>Simple video tools in one place</p>
 </header>
 
 <div class="container">
 
-  <div class="box">
-    <h2>Download Your Video</h2>
+<div class="card">
 
-    <p>Paste a video URL below to get started.</p>
+<h2>Save Your Video</h2>
 
-    <input
-      class="input"
-      type="url"
-      placeholder="Paste video URL here..."
-      id="videoURL"
-    >
+<p class="subtitle">
+Paste a video link to get started
+</p>
 
-    <button class="button" onclick="startDownload()">
-      🔗 Continue
-    </button>
+<div class="input-box">
 
-    <div class="platforms">
-      <div class="platform">▶️ YouTube</div>
-      <div class="platform">🎵 TikTok</div>
-      <div class="platform">📘 Facebook</div>
-      <div class="platform">📸 Instagram</div>
-    </div>
+<input
+id="videoURL"
+type="url"
+placeholder="Paste video URL here..."
+>
 
-    <div class="notice">
-      Please download only videos you own or have permission to use.
-    </div>
-  </div>
+<button class="paste" onclick="pasteURL()">
+📋 Paste
+</button>
 
 </div>
 
+<button class="continue" onclick="checkURL()">
+🔗 Continue
+</button>
+
+<div id="message"></div>
+
+<div class="platforms">
+
+<div class="platform">▶️ YouTube</div>
+<div class="platform">🎵 TikTok</div>
+<div class="platform">📘 Facebook</div>
+<div class="platform">📸 Instagram</div>
+
+</div>
+
+<div class="notice">
+Download only videos that you own or have permission to use.
+Please respect copyright and platform terms.
+</div>
+
+</div>
+</div>
+
 <footer>
-  © 2026 VideoSave
+© 2026 VideoSave
 </footer>
 
 <script>
-function startDownload() {
-  const url = document.getElementById("videoURL").value.trim();
 
-  if (!url) {
-    alert("Please paste a video URL first.");
+async function pasteURL(){
+
+  try{
+
+    const text = await navigator.clipboard.readText();
+
+    document.getElementById("videoURL").value = text;
+
+  }catch(error){
+
+    alert("Please paste the link manually.");
+
+  }
+
+}
+
+function checkURL(){
+
+  const url =
+    document.getElementById("videoURL").value.trim();
+
+  const message =
+    document.getElementById("message");
+
+  if(!url){
+
+    message.innerText =
+      "⚠️ Please enter a video URL.";
+
     return;
   }
 
-  alert(
-    "URL received! A download service/backend is required to process the video."
-  );
+  try{
+
+    new URL(url);
+
+    message.innerText =
+      "✅ Link received. Processing requires a compatible backend.";
+
+  }catch(error){
+
+    message.innerText =
+      "❌ Please enter a valid URL.";
+
+  }
+
 }
+
 </script>
 
 </body>
