@@ -235,7 +235,6 @@ async function checkURL() {
   const api =
     "https://videosave-abi.hhtc02304.workers.dev/api?url=" +
     encodeURIComponent(url);
-
   try {
     const response = await fetch(api, {
       redirect: "manual"
