@@ -214,50 +214,44 @@ Please respect copyright and platform terms.
 
 <script>
 
-async function pasteURL(){
+async function checkURL() {
+  const url = document.getElementById("videoURL").value.trim();
+  const message = document.getElementById("message");
 
-  try{
-
-    const text = await navigator.clipboard.readText();
-
-    document.getElementById("videoURL").value = text;
-
-  }catch(error){
-
-    alert("Please paste the link manually.");
-
-  }
-
-}
-
-function checkURL(){
-
-  const url =
-    document.getElementById("videoURL").value.trim();
-
-  const message =
-    document.getElementById("message");
-
-  if(!url){
-
-    message.innerText =
-      "⚠️ Please enter a video URL.";
-
+  if (!url) {
+    message.innerText = "⚠️ Please enter a video URL.";
     return;
   }
 
-  try{
-
+  try {
     new URL(url);
+  } catch {
+    message.innerText = "❌ Please enter a valid URL.";
+    return;
+  }
 
+  message.innerText = "⏳ Connecting to VideoSave...";
+
+  const api =
+    "https://videosave-abi.hhtc02304.workers.dev/api?url=" +
+    encodeURIComponent(url);
+
+  try {
+    const response = await fetch(api, {
+      redirect: "manual"
+    });
+
+    if (response.type === "opaqueredirect") {
+      message.innerText = "✅ Your link was received.";
+    } else {
+      message.innerText = "✅ VideoSave backend is connected.";
+    }
+
+  } catch (error) {
     message.innerText =
-      "✅ Link received. Processing requires a compatible backend.";
-
-  }catch(error){
-
-    message.innerText =
-      "❌ Please enter a valid URL.";
-
+      "❌ Could not connect to the backend.";
+  }
+}
   }
 
 }
